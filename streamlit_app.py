@@ -56,14 +56,11 @@ y = y_raw.apply(target_encode)
 y
 
 
-with st.expander('Input Features'):
-  st.write('**Input Penguin**')
-  input_df
-  st.write('**Combined Penguins Data**')
-  input_penguins
-  st.write('**Encoded Input Penguin**')
+with st.expander('Data Preparation'):
+  st.write('**Encoded Input Penguin(X)**')
   input_row
-
+  st.write('**Encoded y**')
+  y
 
 
 
