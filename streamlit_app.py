@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 st.title('🤖 Machine Learning App')
 
-st.write('This app is a Mahcine Learning model.')
+st.write('This app is a Machine Learning model.')
 
 with st.expander('Data'):
   st.write('**Raw Data**')
@@ -77,8 +77,7 @@ df_prediction_proba.columns = ['Adelie', 'Chinstrap', 'Gentoo']
 df_prediction_proba.rename(columns={0: 'Adelie',
                                  1: 'Chinstrap',
                                  2: 'Gentoo'})
-
-
+df_prediction_proba
 
 
 
