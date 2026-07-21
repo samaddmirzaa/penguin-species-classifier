@@ -12,12 +12,12 @@ df = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/refs/head
 df
 
 st.write('**X**')
-X = df.drop(columns='species')
-X
+X_raw = df.drop(columns='species')
+X_raw
 
 st.write('**y**')
 y = df.species
-y
+y_raw
 
 with st.expander('Data Visualisation'):
   st.scatter_chart(data=df, x='bill_length_mm', y='body_mass_g', color='species')
@@ -40,11 +40,19 @@ data = {'island': island,
        'body_mass_g': body_mass_g,
        'sex': gender}
 input_df = pd.DataFrame(data, index=[0])
-input_penguins = pd.concat([input_df, X], axis=0)
+input_penguins = pd.concat([input_df, X_raw], axis=0)
 
-# Encode
+# Encode X
 df_penguins = pd.get_dummies(input_penguins, prefix=['island', 'sex'])
 input_row = df_penguins[:1]
+
+# Encode y
+target_mapper = {'Adelie': 0,
+                 'Chinstrap': 1,
+                 'Gentoo': 2}
+def target_encode(val):
+  return target_mapper[val]
+
 
 
 with st.expander('Input Features'):
@@ -52,7 +60,7 @@ with st.expander('Input Features'):
   input_df
   st.write('**Combined Penguins Data**')
   input_penguins
-  st.write('Encoded Input Penguin')
+  st.write('**Encoded Input Penguin**')
   input_row
 
 
